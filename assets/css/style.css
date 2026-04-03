@@ -1,0 +1,113 @@
+/* ========================================== */
+/* FILE: assets/css/style.css - Updated */
+/* ========================================== */
+
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    margin-bottom: 60px;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+/* Navbar Active Highlight - Improved */
+.navbar-nav .nav-link.active {
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 5px;
+    font-weight: bold;
+    position: relative;
+}
+
+.navbar-nav .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 2px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+/* Dropdown active item */
+.dropdown-item.active {
+    background-color: #0d6efd;
+    color: white;
+}
+
+/* Card Hover Effects */
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Button Styles */
+.btn {
+    border-radius: 25px;
+    padding: 8px 20px;
+}
+
+/* Form Controls */
+.form-control, .form-select {
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+}
+.form-control:focus, .form-select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13,110,253,0.25);
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive Tables */
+.table-responsive {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Custom Alert */
+.alert {
+    border-radius: 15px;
+}
+
+/* Dashboard Card Icons */
+.card i {
+    font-size: 2.5rem;
+}
+
+/* Safety Tips List */
+.card ul {
+    padding-left: 1.2rem;
+}
+.card li {
+    margin-bottom: 8px;
+}
+
+/* Animation for hover */
+.navbar-nav .nav-link {
+    transition: all 0.2s;
+}
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 5px;
+}
+
+/* Breadcrumb for better navigation (optional) */
+.breadcrumb {
+    background-color: transparent;
+    padding: 0.5rem 0;
+}
