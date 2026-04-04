@@ -24,5 +24,5 @@ require_once dirname(__DIR__) . '/config/constants.php';
 
 <?php
     // Include navbar
-    require_once $_SERVER['DOCUMENT_ROOT'] . '\crime_reporting_system/includes/navbar.php';
+    require_once __DIR__ . '/../includes/navbar.php';
 ?>
