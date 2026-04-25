@@ -1,16 +1,35 @@
 <?php
-// ==========================================
-// FILE: config/db.php
-// Database connection (Placeholder for Phase 1)
-// No actual DB logic, just structure for future
-// ==========================================
-// In Phase 1, we don't implement DB logic.
-// This file is a placeholder for future Phase 2.
-// For now, it returns null.
+class Database {
+    private $host = "localhost";
+    private $db_name = "online_crime_reporting";
+    private $username = "root";
+    private $password = "";
+    private static $conn = null;
 
+    public static function getConnection() {
+        if (self::$conn === null) {
+            try {
+                self::$conn = new PDO(
+                    "mysql:host=localhost;dbname=online_crime_reporting;charset=utf8mb4",
+                    "root",
+                    "",
+                    [
+                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                        PDO::ATTR_EMULATE_PREPARES => false
+                    ]
+                );
+            } catch(PDOException $e) {
+                error_log("Connection Error: " . $e->getMessage());
+                die("Database connection failed");
+            }
+        }
+        return self::$conn;
+    }
+}
+
+// Optional helper
 function getConnection() {
-    // In Phase 2, real PDO connection will be added
-    // Currently no database operations
-    return null;
+    return Database::getConnection();
 }
 ?>
