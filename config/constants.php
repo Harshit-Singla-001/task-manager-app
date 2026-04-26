@@ -36,6 +36,18 @@ define('DEMO_MODE', false);
 // Debug mode (set to false in production)
 define('DEBUG_MODE', false);
 
+// SMTP Configuration for PHPMailer
+define('SMTP_HOST', 'smtp.gmail.com');  // or your SMTP host
+define('SMTP_USERNAME', 'singlaharshit480@gmail.com');
+define('SMTP_PASSWORD', 'fujiiqszdfojjarh');
+define('SMTP_SECURE', 'tls');  // 'tls' or 'ssl'
+define('SMTP_PORT', 587);      // 587 for TLS, 465 for SSL
+define('SMTP_FROM_EMAIL', 'singlaharshit480@gmail.com');
+define('SMTP_FROM_NAME', 'Online Crime Reporting System');
+
+// OTP Configuration
+define('OTP_EXPIRY_MINUTES', 5);
+
 // File upload settings
 define('MAX_FILE_SIZE', 5242880); // 5MB
 define('ALLOWED_EXTENSIONS', 'jpg,jpeg,png,gif,pdf');
@@ -47,10 +59,6 @@ define('ADMIN_ITEMS_PER_PAGE', 15);
 
 // Session timeout (30 minutes)
 define('SESSION_TIMEOUT', 1800);
-
-// OTP settings (for demo, can use static OTP)
-define('DEMO_OTP', '123456'); // Static OTP for testing
-define('OTP_EXPIRY_MINUTES', 10);
 
 // Password requirements
 define('MIN_PASSWORD_LENGTH', 8);

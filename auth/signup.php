@@ -14,10 +14,9 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once '../config/db.php';
 require_once '../config/constants.php';
 
-// Clear any existing signup data
-unset($_SESSION['signup_data']);
-
-// Initialize variables for form values (to retain on error)
+// ==========================================
+// IMPORTANT: Initialize variables with defaults FIRST
+// ==========================================
 $full_name = '';
 $dob = '';
 $aadhaar = '';
@@ -28,6 +27,30 @@ $email = '';
 $show_pan = false;
 $error_message = '';
 $success_message = '';
+
+// ==========================================
+// THEN check for session data to pre-fill (OVERWRITES defaults)
+// ==========================================
+
+// Check if returning from OTP page with preserved data
+if (isset($_SESSION['return_from_otp']) && $_SESSION['return_from_otp'] === true) {
+    // Data is already pre-filled from session
+    // Clear the flag
+    unset($_SESSION['return_from_otp']);
+}
+
+// Pre-fill form data from session if available (this OVERWRITES the empty defaults)
+if (isset($_SESSION['signup_data'])) {
+    $full_name = $_SESSION['signup_data']['full_name'];
+    $dob = $_SESSION['signup_data']['dob'];
+    $aadhaar = $_SESSION['signup_data']['aadhaar'];
+    $pan = isset($_SESSION['signup_data']['pan']) ? $_SESSION['signup_data']['pan'] : '';
+    $address = $_SESSION['signup_data']['address'];
+    $phone = $_SESSION['signup_data']['phone'];
+    $email = $_SESSION['signup_data']['email'];
+    $age = isset($_SESSION['signup_data']['age']) ? $_SESSION['signup_data']['age'] : 0;
+    $show_pan = ($age >= 18);
+}
 
 // Handle Email Verification AJAX request
 if (isset($_POST['verify_email']) && isset($_POST['email'])) {

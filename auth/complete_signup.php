@@ -3,6 +3,24 @@
 // FILE: auth/complete_signup.php
 // Complete Signup - Set Password + Recovery Key
 // ==========================================
+
+// Start session
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Check if email is verified
+if (!isset($_SESSION['email_verified']) || $_SESSION['email_verified'] !== true) {
+    header("Location: signup.php");
+    exit();
+}
+
+// Now get data from session
+$full_name = $_SESSION['signup_data']['full_name'];
+$email = $_SESSION['signup_data']['email'];
+// ... rest of your complete_signup.php code
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
