@@ -109,7 +109,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['complete_signup'])) {
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
         
         // Hash the recovery key using SHA256
-        $recovery_key_hash = hash('sha256', $_SESSION['recovery_key']);
+        $normalized_key = trim(strtolower($_SESSION['recovery_key']));
+        $recovery_key_hash = hash('sha256', $normalized_key);
         
         // Handle PAN (if not provided, set NULL)
         $pan_number = null;
