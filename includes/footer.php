@@ -27,7 +27,7 @@
                     </li>
                     <li class="mb-2">
                         <i class="fas fa-envelope text-primary me-2"></i>
-                        <a href="mailto:harshit.singla@example.com" class="text-white-50 text-decoration-none">harshit.singla@example.com</a>
+                        <a href="mailto:singlaharshit480@gmail.com" class="text-white-50 text-decoration-none">singlaharshit480@gmail.com</a>
                     </li>
                 </ul>
             </div>
@@ -41,7 +41,7 @@
                     </li>
                     <li class="mb-2">
                         <i class="fab fa-github text-light me-2"></i>
-                        <a href="https://github.com/Harshit-Singla-001/Daily-GitHub" target="_blank" class="text-white-50 text-decoration-none">GitHub</a>
+                        <a href="https://github.com/Harshit-Singla-001" target="_blank" class="text-white-50 text-decoration-none">GitHub</a>
                     </li>
                     <li class="mb-2">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" 
@@ -58,8 +58,7 @@
         <div class="text-center">
             <small class="text-white-50">
                 <i class="fas fa-graduation-cap me-1"></i> 
-                &copy; 2026 <?= SITE_NAME ?> | BTech AI & DS - Educational Project | 
-                <i class="fas fa-code ms-2 me-1"></i> Developed by Harshit Singla
+                &copy; 2026 <?= SITE_NAME ?> | Educational Project |
             </small>
         </div>
     </div>

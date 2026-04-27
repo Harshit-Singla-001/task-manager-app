@@ -323,8 +323,8 @@ include_once '../../includes/header.php';
                                 <p style="text-align: justify;">Currently pursuing <strong>BTech in Artificial Intelligence & Data Science (4th Sem)</strong> at CGC College of Engineering.</p>
                                 <p style="text-align: justify;">Passionate about creating beautiful, functional web applications that provide great user experiences. This project combines my interest in design with my technical skills in frontend and backend development.</p>
                                 <div class="education-info mt-3">
-                                    <p><i class="fas fa-graduation-cap text-primary me-2"></i> CGC College of Engineering</p>
-                                    <p><i class="fas fa-book text-primary me-2"></i> BTech AI & Data Science (2024-2028)</p>
+                                    <p><i class="fas fa-graduation-cap text-primary me-4"></i> CGC College of Engineering</p>
+                                    <p><i class="fas fa-book text-primary me-4"></i> BTech AI & Data Science (2024-2028)</p>
                                 </div>
                                 <p class="mt-3 text-muted fst-italic" style="text-align: justify;">Developed as part of an academic project to demonstrate web development and database management skills.</p>
                             </div>
@@ -497,9 +497,9 @@ include_once '../../includes/header.php';
                 <div class="legal-info p-3 border-top border-bottom">
                     <p class="mb-0 small text-muted">
                         <i class="fas fa-gavel me-1"></i> 
-                        <a href="terms_of_service.php" class="text-decoration-none me-3">Terms of Service</a> 
+                        <a href="<?= BASE_URL ?>user/pages/terms_of_service.php" class="text-decoration-none me-3">Terms of Service</a> 
                         <span class="text-muted">|</span> 
-                        <a href="privacy_policy.php" class="text-decoration-none ms-3">Privacy Policy</a>
+                        <a href="<?= BASE_URL ?>user/pages/privacy_policy.php" class="text-decoration-none ms-3">Privacy Policy</a>
                     </p>
                     <p class="mt-2 small text-muted mb-0">
                         <i class="fas fa-info-circle me-1"></i> These legal documents outline your rights and responsibilities when using this platform.

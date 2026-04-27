@@ -76,8 +76,7 @@ require_once dirname(__DIR__) . '/config/constants.php';
         </li>
     </ul>
     
-    <!-- Profile Right - Centered on mobile with name -->
-    <!-- Profile Right - No Arrow -->
+    <!-- Profile -->
 <div class="dropdown ms-auto ms-lg-0">
     <?php if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
         <?php
@@ -95,7 +94,7 @@ require_once dirname(__DIR__) . '/config/constants.php';
             </div>
         </div>
         <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="<?= BASE_URL ?>user/profile.php">
+            <li><a class="dropdown-item" href="<?= BASE_URL ?>user/pages/profile.php">
                 <i class="fas fa-user-circle me-2"></i> My Profile
             </a></li>
             <li><hr class="dropdown-divider"></li>
