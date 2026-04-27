@@ -1,8 +1,11 @@
 /* ========================================== */
-/* FILE: assets/css/style.css - Updated */
+/* FILE: assets/css/style.css - Cleaned */
 /* ========================================== */
 
-/* General Styles */
+/* ========================================== */
+/* 1. GENERAL & BASE STYLES */
+/* ========================================== */
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f0f2f5;
@@ -14,7 +17,19 @@ html {
     min-height: 100%;
 }
 
-/* Navbar Active Highlight - Improved */
+/* ========================================== */
+/* 2. NAVIGATION BAR STYLES */
+/* ========================================== */
+
+.navbar-nav .nav-link {
+    transition: all 0.2s;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 5px;
+}
+
 .navbar-nav .nav-link.active {
     background-color: rgba(255,255,255,0.2);
     border-radius: 5px;
@@ -34,80 +49,341 @@ html {
     border-radius: 2px;
 }
 
-/* Dropdown active item */
 .dropdown-item.active {
     background-color: #0d6efd;
     color: white;
 }
 
-/* Card Hover Effects */
+/* ========================================== */
+/* 3. CARD COMPONENTS */
+/* ========================================== */
+
 .card {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
 .card:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-/* Button Styles */
+.card i {
+    font-size: 2.5rem;
+}
+
+.card ul {
+    padding-left: 1.2rem;
+}
+
+.card li {
+    margin-bottom: 8px;
+}
+
+/* Feature & Future Cards (Shared styles) */
+.feature-card, 
+.future-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover, 
+.future-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Developer Cards */
+.developer-simple-card .card,
+.developer-detailed-card .card {
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+/* ========================================== */
+/* 4. BUTTON & FORM STYLES */
+/* ========================================== */
+
 .btn {
     border-radius: 25px;
     padding: 8px 20px;
 }
 
-/* Form Controls */
-.form-control, .form-select {
+.form-control, 
+.form-select {
     border-radius: 10px;
     border: 1px solid #ced4da;
 }
-.form-control:focus, .form-select:focus {
+
+.form-control:focus, 
+.form-select:focus {
     border-color: #0d6efd;
     box-shadow: 0 0 0 0.2rem rgba(13,110,253,0.25);
 }
 
-/* Footer */
+.btn-close {
+    opacity: 0.5;
+    font-size: 0.8rem;
+}
+
+.btn-close:hover {
+    opacity: 1;
+}
+
+/* ========================================== */
+/* 5. FOOTER & TABLE STYLES */
+/* ========================================== */
+
 footer {
     margin-top: auto;
     position: absolute;
-    /* bottom: 0; */
     width: 100%;
 }
 
-/* Responsive Tables */
 .table-responsive {
     border-radius: 10px;
     overflow: hidden;
 }
 
-/* Custom Alert */
+/* ========================================== */
+/* 6. ALERT & DIVIDER STYLES */
+/* ========================================== */
+
 .alert {
     border-radius: 15px;
 }
 
-/* Dashboard Card Icons */
-.card i {
-    font-size: 2.5rem;
+.alert-warning {
+    border-left: 5px solid #ffc107;
 }
 
-/* Safety Tips List */
-.card ul {
-    padding-left: 1.2rem;
-}
-.card li {
-    margin-bottom: 8px;
-}
-
-/* Animation for hover */
-.navbar-nav .nav-link {
-    transition: all 0.2s;
-}
-.navbar-nav .nav-link:hover {
-    background-color: rgba(255,255,255,0.1);
-    border-radius: 5px;
+.divider {
+    height: 3px;
+    width: 60px;
+    background-color: #0d6efd;
+    margin: 15px auto;
 }
 
-/* Breadcrumb for better navigation (optional) */
-.breadcrumb {
+/* ========================================== */
+/* 7. DEVELOPER SECTION STYLES */
+/* ========================================== */
+
+.about-section .section-header i {
+    font-size: 2rem;
+}
+
+.developer-profile {
+    gap: 1.5rem;
+}
+
+.profile-img-portrait {
+    transition: transform 0.3s ease;
+}
+
+.profile-img-portrait:hover {
+    transform: scale(1.02);
+}
+
+.developer-info h3 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.developer-role {
+    font-size: 1.1rem;
+}
+
+.education-info p {
+    margin-bottom: 0.5rem;
+}
+
+.education-info i {
+    width: 25px;
+}
+
+#toggleDeveloperCard {
+    transition: transform 0.3s ease;
+}
+
+#toggleDeveloperCard:hover {
+    transform: scale(1.1);
+}
+
+/* ========================================== */
+/* 8. FUTURE SCOPE BADGES */
+/* ========================================== */
+
+.badge-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.badge-warning {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.badge-info {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.badge-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* ========================================== */
+/* 9. LEGAL LINKS STYLES */
+/* ========================================== */
+
+.legal-links a {
+    color: #0d6efd;
+    transition: color 0.3s ease;
+}
+
+.legal-links a:hover {
+    color: #0a58ca;
+    text-decoration: underline !important;
+}
+
+/* ========================================== */
+/* 10. PAGE-SPECIFIC STYLES (ABOUT PAGE) */
+/* ========================================== */
+
+.page-title-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.step-number {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.about-logo i {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================== */
+/* 11. RESPONSIVE MEDIA QUERIES (MOBILE VIEW) */
+/* ========================================== */
+
+@media (max-width: 768px) {
+    /* Step items */
+    .step-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .step-number {
+        margin: 0 auto 15px auto;
+    }
+    
+    /* Typography */
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    /* Developer section */
+    .developer-profile {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .developer-photo {
+        margin-right: 0 !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .developer-detailed-card .developer-info p {
+        text-align: justify !important;
+    }
+    
+    .developer-simple-card .card-body {
+        padding: 1.5rem;
+    }
+    
+    .developer-info {
+        font-size: 0.95rem;
+    }
+    
+    /* Profile image */
+    .profile-img-portrait {
+        width: 150px;
+        height: 150px;
+    }
+    
+    /* Future cards */
+    .future-card .d-flex {
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+    
+    .future-card .badge {
+        margin-bottom: 10px;
+    }
+    
+    /* Flip card */
+    .flip-card {
+        height: 500px;
+    }
+    
+    .flip-card-back .card-body p {
+        text-align: justify !important;
+    }
+}
+
+/* ========================================== */
+/* 12. FLIP CARD STYLES (IF USED) */
+/* ========================================== */
+
+.flip-card {
     background-color: transparent;
-    padding: 0.5rem 0;
+    width: 100%;
+    height: 450px;
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, 
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.flip-card-front {
+    transform: rotateY(0deg);
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front .card, 
+.flip-card-back .card {
+    height: 100%;
+    border-radius: 15px;
 }
