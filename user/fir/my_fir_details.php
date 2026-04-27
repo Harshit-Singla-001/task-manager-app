@@ -7,6 +7,7 @@ include_once '../../includes/header.php';
 $fir_id = isset($_GET['id']) ? $_GET['id'] : 1;
 ?>
 
+<div class="main-content">
 <div class="container my-5">
     <div class="card shadow">
         <div class="card-header bg-info text-white">
@@ -43,6 +44,7 @@ $fir_id = isset($_GET['id']) ? $_GET['id'] : 1;
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <?php include_once '../../includes/footer.php'; ?>

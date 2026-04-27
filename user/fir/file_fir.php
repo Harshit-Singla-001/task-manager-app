@@ -6,6 +6,7 @@
 include_once '../../includes/header.php';
 ?>
 
+<div class="main-content">
 <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -57,6 +58,7 @@ include_once '../../includes/header.php';
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <?php include_once '../../includes/footer.php'; ?>

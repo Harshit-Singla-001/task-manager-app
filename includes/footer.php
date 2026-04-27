@@ -5,7 +5,7 @@
 // ==========================================
 ?>
 <!-- Footer -->
-<footer class="bg-dark text-white mt-5 py-4">
+<footer class="bg-dark text-white py-4">
     <div class="container">
         <div class="row">
             <div class="col-md-4 mb-4 mb-md-0">
@@ -27,7 +27,7 @@
                     </li>
                     <li class="mb-2">
                         <i class="fas fa-envelope text-primary me-2"></i>
-                        <a href="mailto:singlaharshit480@gmail.com" class="text-white-50 text-decoration-none">singlaharshit480@gmail.com</a>
+                        <a href="mailto:harshit.singla@example.com" class="text-white-50 text-decoration-none">harshit.singla@example.com</a>
                     </li>
                 </ul>
             </div>
@@ -41,10 +41,12 @@
                     </li>
                     <li class="mb-2">
                         <i class="fab fa-github text-light me-2"></i>
-                        <a href="https://github.com/Harshit-Singla-001" target="_blank" class="text-white-50 text-decoration-none">GitHub</a>
+                        <a href="https://github.com/Harshit-Singla-001/Daily-GitHub" target="_blank" class="text-white-50 text-decoration-none">GitHub</a>
                     </li>
                     <li class="mb-2">
-                        <i class="fab fa-code text-warning me-2"></i>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" 
+                             alt="LeetCode" 
+                             style="width: 18px; height: 18px; margin-right: 8px;">
                         <a href="https://leetcode.com/u/Harshit-Singla-001/" target="_blank" class="text-white-50 text-decoration-none">LeetCode</a>
                     </li>
                 </ul>
@@ -56,14 +58,14 @@
         <div class="text-center">
             <small class="text-white-50">
                 <i class="fas fa-graduation-cap me-1"></i> 
-                &copy; 2026 <?= SITE_NAME ?> | Educational Project | 
+                &copy; 2026 <?= SITE_NAME ?> | BTech AI & DS - Educational Project | 
+                <i class="fas fa-code ms-2 me-1"></i> Developed by Harshit Singla
             </small>
         </div>
     </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Custom JS for active menu highlighting on mobile -->
 <script>
     // Add active class to current menu item in mobile view
     document.addEventListener('DOMContentLoaded', function() {

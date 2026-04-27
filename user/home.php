@@ -17,6 +17,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 }
 ?>
 
+<div class="main-content">
 <div class="container my-5">
     <div class="row">
         <div class="col-md-12">
@@ -87,6 +88,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <?php include_once '../includes/footer.php'; ?>

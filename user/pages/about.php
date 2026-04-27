@@ -6,6 +6,7 @@
 include_once '../../includes/header.php';
 ?>
 
+<div class="main-content">
 <!-- Page Title Section with Logo -->
 <section class="page-title-section bg-light py-5">
     <div class="container">
@@ -508,5 +509,6 @@ include_once '../../includes/header.php';
         </div>
     </div>
 </section>
+</div>
 
 <?php include_once '../../includes/footer.php'; ?>

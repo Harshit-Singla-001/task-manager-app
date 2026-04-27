@@ -6,6 +6,7 @@
 include_once '../../includes/header.php';
 ?>
 
+<div class="main-content">
 <div class="container my-5">
     <div class="card shadow">
         <div class="card-header bg-dark text-white">
@@ -27,6 +28,7 @@ include_once '../../includes/header.php';
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <script>

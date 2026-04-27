@@ -6,6 +6,7 @@
 include_once '../../includes/header.php';
 ?>
 
+<div class="main-content">
 <div class="container my-5">
     <h2 class="text-center mb-4"><i class="fas fa-shield-virus"></i> Safety Tips & Guidelines</h2>
     <div class="row">
@@ -55,6 +56,7 @@ include_once '../../includes/header.php';
     <div class="alert alert-info mt-3">
         <i class="fas fa-phone-alt"></i> <strong>Emergency Helpline:</strong> For any immediate help, dial 100 (Police) or 112 (Emergency Response).
     </div>
+</div>
 </div>
 
 <?php include_once '../../includes/footer.php'; ?>

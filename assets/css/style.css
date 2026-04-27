@@ -1,25 +1,50 @@
 /* ========================================== */
-/* FILE: assets/css/style.css - Cleaned */
+/* FILE: assets/css/style.css - Complete */
 /* ========================================== */
 
 /* ========================================== */
 /* 1. GENERAL & BASE STYLES */
 /* ========================================== */
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f0f2f5;
-    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px !important;
 }
 
-html {
-    position: relative;
-    min-height: 100%;
+/* Main content wrapper to push footer down */
+.main-content {
+    flex: 1;
 }
 
 /* ========================================== */
-/* 2. NAVIGATION BAR STYLES */
+/* 2. NAVIGATION BAR STYLES - FIXED TOP */
 /* ========================================== */
+
+/* Fixed navbar styling */
+.navbar.fixed-top {
+    position: fixed !important;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+.navbar {
+    position: fixed !important;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
 
 .navbar-nav .nav-link {
     transition: all 0.2s;
@@ -54,8 +79,66 @@ html {
     color: white;
 }
 
+/* Responsive brand name - prevent wrapping */
+.brand-name {
+    white-space: nowrap;
+    font-size: 1rem;
+}
+
+/* Smaller font for very small screens */
+@media (max-width: 380px) {
+    .brand-name {
+        font-size: 0.85rem;
+    }
+    
+    .navbar-brand i {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 340px) {
+    .brand-name {
+        font-size: 0.75rem;
+    }
+}
+
+/* Mobile profile name alignment */
+@media (max-width: 767px) {
+    .dropdown {
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .dropdown-toggle-no-arrow {
+        width: 100%;
+    }
+    
+    .dropdown-toggle-no-arrow .d-flex {
+        justify-content: center;
+        padding: 8px;
+        background-color: rgba(255,255,255,0.1);
+        border-radius: 40px;
+    }
+}
+
 /* ========================================== */
-/* 3. CARD COMPONENTS */
+/* 3. FOOTER STYLES - NO EXTRA SPACE */
+/* ========================================== */
+
+footer {
+    margin-top: auto;
+    position: relative;
+    width: 100%;
+    background-color: #212529;
+}
+
+/* Remove any extra spacing after footer */
+footer + * {
+    display: none;
+}
+
+/* ========================================== */
+/* 4. CARD COMPONENTS */
 /* ========================================== */
 
 .card {
@@ -79,7 +162,7 @@ html {
     margin-bottom: 8px;
 }
 
-/* Feature & Future Cards (Shared styles) */
+/* Feature & Future Cards */
 .feature-card, 
 .future-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -99,7 +182,7 @@ html {
 }
 
 /* ========================================== */
-/* 4. BUTTON & FORM STYLES */
+/* 5. BUTTON & FORM STYLES */
 /* ========================================== */
 
 .btn {
@@ -129,14 +212,8 @@ html {
 }
 
 /* ========================================== */
-/* 5. FOOTER & TABLE STYLES */
+/* 6. TABLE STYLES */
 /* ========================================== */
-
-footer {
-    margin-top: auto;
-    position: absolute;
-    width: 100%;
-}
 
 .table-responsive {
     border-radius: 10px;
@@ -144,7 +221,7 @@ footer {
 }
 
 /* ========================================== */
-/* 6. ALERT & DIVIDER STYLES */
+/* 7. ALERT & DIVIDER STYLES */
 /* ========================================== */
 
 .alert {
@@ -163,7 +240,7 @@ footer {
 }
 
 /* ========================================== */
-/* 7. DEVELOPER SECTION STYLES */
+/* 8. DEVELOPER SECTION STYLES */
 /* ========================================== */
 
 .about-section .section-header i {
@@ -208,7 +285,7 @@ footer {
 }
 
 /* ========================================== */
-/* 8. FUTURE SCOPE BADGES */
+/* 9. FUTURE SCOPE BADGES */
 /* ========================================== */
 
 .badge-danger {
@@ -232,7 +309,7 @@ footer {
 }
 
 /* ========================================== */
-/* 9. LEGAL LINKS STYLES */
+/* 10. LEGAL LINKS STYLES */
 /* ========================================== */
 
 .legal-links a {
@@ -246,7 +323,7 @@ footer {
 }
 
 /* ========================================== */
-/* 10. PAGE-SPECIFIC STYLES (ABOUT PAGE) */
+/* 11. PAGE-SPECIFIC STYLES (ABOUT PAGE) */
 /* ========================================== */
 
 .page-title-section {
@@ -273,10 +350,123 @@ footer {
 }
 
 /* ========================================== */
-/* 11. RESPONSIVE MEDIA QUERIES (MOBILE VIEW) */
+/* 12. PROFILE CIRCLE STYLES */
 /* ========================================== */
 
+.profile-circle {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.profile-circle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.5);
+}
+
+/* Dropdown menu styling */
+.dropdown-menu {
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-top: 10px;
+    border: none;
+}
+
+.dropdown-item {
+    padding: 8px 20px;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+.dropdown-item.text-danger:hover {
+    background-color: #fee;
+}
+
+/* Remove dropdown arrow from profile */
+.dropdown-toggle-no-arrow::after {
+    display: none !important;
+}
+
+.dropdown-toggle-no-arrow {
+    cursor: pointer;
+}
+
+/* ========================================== */
+/* 13. RESPONSIVE MEDIA QUERIES */
+/* ========================================== */
+
+/* Mobile navbar alignment fixes - ALL LEFT ALIGNED */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        text-align: left;
+    }
+    
+    .navbar-nav {
+        text-align: left;
+        width: 100%;
+        margin: 10px 0;
+    }
+    
+    .navbar-nav .nav-item {
+        width: 100%;
+        text-align: left;
+    }
+    
+    .navbar-nav .nav-link {
+        display: block;
+        margin: 5px 0;
+        text-align: left;
+        padding: 8px 15px;
+    }
+    
+    /* Profile section on mobile - left aligned */
+    .dropdown {
+        width: 100%;
+        text-align: left;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .dropdown-toggle-no-arrow {
+        display: block;
+        width: 100%;
+    }
+    
+    .dropdown-toggle-no-arrow .d-flex {
+        justify-content: flex-start;
+    }
+    
+    /* Remove the ms-auto class on mobile */
+    .ms-lg-0 {
+        margin-left: 0 !important;
+    }
+    
+    /* Profile circle and name left aligned */
+    .profile-circle {
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 1rem !important;
+    }
+}
+
 @media (max-width: 768px) {
+    body {
+        padding-top: 56px !important;
+    }
+    
+    .navbar-nav .nav-link {
+        margin: 5px 0;
+    }
+    
+    .profile-circle {
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 1rem !important;
+    }
+    
     /* Step items */
     .step-item {
         flex-direction: column;
@@ -287,12 +477,10 @@ footer {
         margin: 0 auto 15px auto;
     }
     
-    /* Typography */
     .display-4 {
         font-size: 2rem;
     }
     
-    /* Developer section */
     .developer-profile {
         flex-direction: column;
         text-align: center;
@@ -315,13 +503,11 @@ footer {
         font-size: 0.95rem;
     }
     
-    /* Profile image */
     .profile-img-portrait {
         width: 150px;
         height: 150px;
     }
     
-    /* Future cards */
     .future-card .d-flex {
         flex-direction: column;
         align-items: flex-start !important;
@@ -331,7 +517,6 @@ footer {
         margin-bottom: 10px;
     }
     
-    /* Flip card */
     .flip-card {
         height: 500px;
     }
@@ -339,10 +524,30 @@ footer {
     .flip-card-back .card-body p {
         text-align: justify !important;
     }
+    
+    /* Footer responsive */
+    footer {
+        text-align: center;
+    }
+    
+    footer h5 {
+        margin-top: 15px;
+    }
+    
+    footer ul {
+        padding-left: 0;
+    }
+}
+
+/* Social link hover effects */
+footer a.text-white-50:hover {
+    color: #ffffff !important;
+    text-decoration: underline !important;
+    transition: all 0.2s ease;
 }
 
 /* ========================================== */
-/* 12. FLIP CARD STYLES (IF USED) */
+/* 14. FLIP CARD STYLES (IF USED) */
 /* ========================================== */
 
 .flip-card {
@@ -386,110 +591,4 @@ footer {
 .flip-card-back .card {
     height: 100%;
     border-radius: 15px;
-}
-
-/* ========================================== */
-/* PROFILE CIRCLE STYLES */
-/* ========================================== */
-
-.profile-circle {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    cursor: pointer;
-}
-
-.profile-circle:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 0 2px rgba(255,255,255,0.5);
-}
-
-/* Dropdown menu styling */
-.dropdown-menu {
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    margin-top: 10px;
-    border: none;
-}
-
-.dropdown-item {
-    padding: 8px 20px;
-    transition: background-color 0.2s ease;
-}
-
-.dropdown-item:hover {
-    background-color: #f8f9fa;
-}
-
-.dropdown-item.text-danger:hover {
-    background-color: #fee;
-}
-
-/* Remove dropdown arrow from profile */
-.dropdown-toggle-no-arrow::after {
-    display: none !important;
-}
-
-/* Or alternatively, target any dropdown toggle that has no arrow class */
-.dropdown-toggle-no-arrow {
-    cursor: pointer;
-}
-
-/* Responsive navbar adjustments */
-@media (max-width: 991px) {
-    .navbar-brand span {
-        font-size: 0.9rem;
-    }
-    
-    .navbar-nav {
-        text-align: center;
-        margin: 10px 0;
-    }
-    
-    .navbar-nav .nav-link {
-        display: inline-block;
-        margin: 0 10px;
-    }
-    
-    .dropdown {
-        text-align: center;
-        margin: 10px 0;
-    }
-    
-    .dropdown .btn-outline-light {
-        width: auto;
-        margin: 0 auto;
-    }
-}
-
-@media (max-width: 768px) {
-    .navbar-nav .nav-link {
-        margin: 5px 0;
-    }
-    
-    .profile-circle {
-        width: 35px !important;
-        height: 35px !important;
-        font-size: 1rem !important;
-    }
-}
-
-/* Footer responsive adjustments */
-@media (max-width: 768px) {
-    footer {
-        text-align: center;
-    }
-    
-    footer h5 {
-        margin-top: 15px;
-    }
-    
-    footer ul {
-        padding-left: 0;
-    }
-}
-
-/* Social link hover effects */
-footer a.text-white-50:hover {
-    color: #ffffff !important;
-    text-decoration: underline !important;
-    transition: all 0.2s ease;
 }
