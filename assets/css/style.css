@@ -387,3 +387,109 @@ footer {
     height: 100%;
     border-radius: 15px;
 }
+
+/* ========================================== */
+/* PROFILE CIRCLE STYLES */
+/* ========================================== */
+
+.profile-circle {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.profile-circle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.5);
+}
+
+/* Dropdown menu styling */
+.dropdown-menu {
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-top: 10px;
+    border: none;
+}
+
+.dropdown-item {
+    padding: 8px 20px;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+.dropdown-item.text-danger:hover {
+    background-color: #fee;
+}
+
+/* Remove dropdown arrow from profile */
+.dropdown-toggle-no-arrow::after {
+    display: none !important;
+}
+
+/* Or alternatively, target any dropdown toggle that has no arrow class */
+.dropdown-toggle-no-arrow {
+    cursor: pointer;
+}
+
+/* Responsive navbar adjustments */
+@media (max-width: 991px) {
+    .navbar-brand span {
+        font-size: 0.9rem;
+    }
+    
+    .navbar-nav {
+        text-align: center;
+        margin: 10px 0;
+    }
+    
+    .navbar-nav .nav-link {
+        display: inline-block;
+        margin: 0 10px;
+    }
+    
+    .dropdown {
+        text-align: center;
+        margin: 10px 0;
+    }
+    
+    .dropdown .btn-outline-light {
+        width: auto;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-nav .nav-link {
+        margin: 5px 0;
+    }
+    
+    .profile-circle {
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* Footer responsive adjustments */
+@media (max-width: 768px) {
+    footer {
+        text-align: center;
+    }
+    
+    footer h5 {
+        margin-top: 15px;
+    }
+    
+    footer ul {
+        padding-left: 0;
+    }
+}
+
+/* Social link hover effects */
+footer a.text-white-50:hover {
+    color: #ffffff !important;
+    text-decoration: underline !important;
+    transition: all 0.2s ease;
+}
