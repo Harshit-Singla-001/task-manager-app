@@ -77,8 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
     // If no validation errors, proceed with login
     if (empty($errors)) {
         
-        $database = new Database();
-        $pdo = $database->getConnection();
+        $pdo = Database::getConnection();
         
         if ($pdo != null) {
             try {
@@ -152,6 +151,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
                             $_SESSION['email'] = $staff['email'];
                             $_SESSION['role'] = $staff['role'];
                             $_SESSION['login_type'] = 'staff';
+
+                            // FOR ADMIN NAVBAR
+                            $_SESSION['admin_name'] = $staff['full_name'];
+                            $_SESSION['admin_email'] = $staff['email'];
+                            $_SESSION['admin_role'] = $staff['role'];
                             
                             // Set remember me cookie if checked
                             if ($remember_me == 'yes') {
