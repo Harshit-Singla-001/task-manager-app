@@ -1,10 +1,35 @@
 <?php
 // ==========================================
 // FILE: user/fir/my_fir_details.php
-// My FIR Details Page
+// My FIR Details Page - Redirect Admin to Home
 // ==========================================
-include_once '../../includes/header.php';
+
+// Start session
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Include required files
+require_once '../../config/constants.php';
+require_once '../../includes/auth_check.php';
+
+// Check if user is logged in
+if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    $_SESSION['error'] = "Please login first.";
+    header("Location: " . BASE_URL . "index.php");
+    exit();
+}
+
+// ✅ CHECK IF ADMIN - REDIRECT TO HOME PAGE
+if(isAdminUser()) {
+    $_SESSION['error'] = "Admin accounts cannot view FIR details. User only.";
+    header("Location: " . BASE_URL . "user/home.php");
+    exit();
+}
+
 $fir_id = isset($_GET['id']) ? $_GET['id'] : 1;
+
+include_once '../../includes/header.php';
 ?>
 
 <div class="main-content">
@@ -17,12 +42,18 @@ $fir_id = isset($_GET['id']) ? $_GET['id'] : 1;
             <div class="row">
                 <div class="col-md-6">
                     <table class="table table-bordered">
-                        <tr><th width="40%">FIR Number</th><td>#FIR00<?php echo $fir_id; ?></td></tr>
-                        <tr><th>Date of Incident</th><td>2024-01-15</td></tr>
-                        <tr><th>Incident Type</th><td>Cyber Crime</td></tr>
-                        <tr><th>Location</th><td>Cyber Cell, Electronic City</td></tr>
-                        <tr><th>Status</th><td><span class="badge bg-warning">Under Investigation</span></td></tr>
-                        <tr><th>Filed On</th><td>2024-01-16</td></tr>
+                        <tr><th width="40%">FIR Number</th><td>#FIR00<?php echo $fir_id; ?></td>
+                        </tr>
+                        <tr><th>Date of Incident</th><td>2024-01-15</td>
+                        </tr>
+                        <tr><th>Incident Type</th><td>Cyber Crime</td>
+                        </tr>
+                        <tr><th>Location</th><td>Cyber Cell, Electronic City</td>
+                        </tr>
+                        <tr><th>Status</th><td><span class="badge bg-warning">Under Investigation</span></td>
+                        </tr>
+                        <tr><th>Filed On</th><td>2024-01-16</td>
+                        </tr>
                     </table>
                 </div>
                 <div class="col-md-6">

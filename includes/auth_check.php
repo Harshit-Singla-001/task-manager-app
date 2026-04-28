@@ -30,4 +30,17 @@ if (isset($required_role) && !empty($required_role)) {
         exit();
     }
 }
+
+// ✅ NEW: Function to check if current user is admin (staff)
+function isAdminUser() {
+    return isset($_SESSION['login_type']) && $_SESSION['login_type'] === 'staff';
+}
+
+// ✅ NEW: Function to check if current user is regular user
+function isRegularUser() {
+    return isset($_SESSION['login_type']) && $_SESSION['login_type'] === 'user';
+}
+
+// ✅ NEW: Set global variable for view-only mode (for admin viewing user pages)
+$view_only_mode = isAdminUser();
 ?>

@@ -1,8 +1,32 @@
 <?php
 // ==========================================
 // FILE: user/fir/my_firs.php
-// My FIRs Page (List of user's FIRs)
+// My FIRs Page - Redirect Admin to Home
 // ==========================================
+
+// Start session
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Include required files
+require_once '../../config/constants.php';
+require_once '../../includes/auth_check.php';
+
+// Check if user is logged in
+if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    $_SESSION['error'] = "Please login first.";
+    header("Location: " . BASE_URL . "index.php");
+    exit();
+}
+
+// ✅ CHECK IF ADMIN - REDIRECT TO HOME PAGE
+if(isAdminUser()) {
+    $_SESSION['error'] = "Admin accounts cannot view My FIRs Page. Users only.";
+    header("Location: " . BASE_URL . "user/home.php");
+    exit();
+}
+
 include_once '../../includes/header.php';
 ?>
 

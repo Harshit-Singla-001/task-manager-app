@@ -1,7 +1,7 @@
 <?php
 // ==========================================
 // FILE: admin/profile/profile.php
-// Admin Profile Page - NO HTML TAGS (navbar handles them)
+// Admin Profile Page - With Admin Navbar/Footer
 // ==========================================
 
 // Start session
@@ -107,12 +107,12 @@ include_once ROOT_PATH . 'includes/admin_navbar.php';
                         </div>
                     </div>
                     <div class="card-footer text-center">
-                        <button class="btn btn-primary" onclick="alert('Edit profile form would open here')">
+                        <a href="<?php echo BASE_URL; ?>admin/profile/edit_profile.php" class="btn btn-primary">
                             ✏️ Edit Profile
-                        </button>
-                        <button class="btn btn-secondary" onclick="alert('Change password form would open here')">
+                        </a>
+                        <a href="<?php echo BASE_URL; ?>admin/profile/change_password.php" class="btn btn-secondary">
                             🔒 Change Password
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
