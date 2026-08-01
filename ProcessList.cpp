@@ -129,6 +129,9 @@ void ProcessList::deleteProcess() {
         return;
     }
 
+    int terminatedCount = 0;
+    int failedCount = 0;
+
     for (const auto& p : listVec) {
         bool match =
             (choice == 1 && p.getPID() == pid) ||
@@ -137,15 +140,28 @@ void ProcessList::deleteProcess() {
         if (match) {
             HANDLE hProcess = OpenProcess(PROCESS_TERMINATE, FALSE, p.getPID());
             if (hProcess) {
-                TerminateProcess(hProcess, 0);
+                if (TerminateProcess(hProcess, 0)) {
+                    terminatedCount++;
+                } else {
+                    failedCount++;
+                    cout << "Failed to terminate PID " << p.getPID() << ". Error: " << GetLastError() << "\n";
+                }
                 CloseHandle(hProcess);
-                cout << "Process terminated successfully.\n";
-                return;
+            } else {
+                failedCount++;
+                cout << "Access denied to open PID " << p.getPID() << " for termination. Error: " << GetLastError() << "\n";
+            }
+            if (choice == 1) {
+                break;
             }
         }
     }
 
-    cout << "Process not found or access denied.\n";
+    if (terminatedCount > 0) {
+        cout << "Successfully terminated " << terminatedCount << " process(es).\n";
+    } else if (failedCount == 0) {
+        cout << "Process not found.\n";
+    }
 }
 
 // ---------- restart (FIXED CreateProcess ERROR HERE) ----------
@@ -180,43 +196,70 @@ void ProcessList::restartProcess() {
             (choice == 2 && toLower(p.getImageName()) == name);
 
         if (match) {
-            HANDLE hProcess = OpenProcess(PROCESS_TERMINATE, FALSE, p.getPID());
+            HANDLE hProcess = OpenProcess(PROCESS_TERMINATE | PROCESS_QUERY_LIMITED_INFORMATION, FALSE, p.getPID());
+            if (!hProcess) {
+                hProcess = OpenProcess(PROCESS_TERMINATE | PROCESS_QUERY_INFORMATION, FALSE, p.getPID());
+            }
+
             if (hProcess) {
-                TerminateProcess(hProcess, 0);
-                CloseHandle(hProcess);
+                vector<char> pathBuf(32768);
+                DWORD size = pathBuf.size();
+                string fullPath = p.getImageName(); // default fallback
 
-                // 🔥 FIX: writable command buffer
-                string cmd = p.getImageName();
-                vector<char> cmdBuf(cmd.begin(), cmd.end());
-                cmdBuf.push_back('\0');
+                typedef BOOL (WINAPI *QueryFullProcessImageNameA_t)(HANDLE, DWORD, LPSTR, PDWORD);
+                QueryFullProcessImageNameA_t pQueryFullProcessImageNameA = 
+                    (QueryFullProcessImageNameA_t)GetProcAddress(GetModuleHandleA("kernel32.dll"), "QueryFullProcessImageNameA");
 
-                STARTUPINFO si = { sizeof(si) };
-                PROCESS_INFORMATION pi;
-
-                if (CreateProcess(
-                        NULL,
-                        cmdBuf.data(),   // ✅ correct LPSTR
-                        NULL,
-                        NULL,
-                        FALSE,
-                        0,
-                        NULL,
-                        NULL,
-                        &si,
-                        &pi)) {
-
-                    CloseHandle(pi.hProcess);
-                    CloseHandle(pi.hThread);
-                    cout << "Process restarted successfully.\n";
+                if (pQueryFullProcessImageNameA && pQueryFullProcessImageNameA(hProcess, 0, pathBuf.data(), &size)) {
+                    fullPath = string(pathBuf.data(), size);
                 } else {
-                    cout << "Restart failed. Error: " << GetLastError() << "\n";
+                    DWORD bytesRead = GetModuleFileNameExA(hProcess, NULL, pathBuf.data(), pathBuf.size());
+                    if (bytesRead > 0) {
+                        fullPath = string(pathBuf.data(), bytesRead);
+                    }
                 }
+
+                if (TerminateProcess(hProcess, 0)) {
+                    CloseHandle(hProcess);
+                    cout << "Terminated process successfully. Starting new instance...\n";
+
+                    vector<char> cmdBuf(fullPath.begin(), fullPath.end());
+                    cmdBuf.push_back('\0');
+
+                    STARTUPINFO si = { sizeof(si) };
+                    PROCESS_INFORMATION pi;
+
+                    if (CreateProcess(
+                            NULL,
+                            cmdBuf.data(),
+                            NULL,
+                            NULL,
+                            FALSE,
+                            0,
+                            NULL,
+                            NULL,
+                            &si,
+                            &pi)) {
+
+                        CloseHandle(pi.hProcess);
+                        CloseHandle(pi.hThread);
+                        cout << "Process restarted successfully from: " << fullPath << "\n";
+                    } else {
+                        cout << "Restart failed (CreateProcess failed). Error: " << GetLastError() << "\n";
+                    }
+                } else {
+                    cout << "Failed to terminate process for restart. Error: " << GetLastError() << "\n";
+                    CloseHandle(hProcess);
+                }
+                return;
+            } else {
+                cout << "Access denied to open process for restart. Error: " << GetLastError() << "\n";
                 return;
             }
         }
     }
 
-    cout << "Process not found or access denied.\n";
+    cout << "Process not found.\n";
 }
 
 // ---------- add process (FIXED PROPERLY) ----------

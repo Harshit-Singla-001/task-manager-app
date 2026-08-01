@@ -1,6 +1,10 @@
 #ifndef PROCESSLIST_H
 #define PROCESSLIST_H
 
+#ifndef _WIN32_WINNT
+#define _WIN32_WINNT 0x0600
+#endif
+
 #include <iostream>
 #include <windows.h>
 #include <tlhelp32.h>
