@@ -12,5 +12,3 @@ How To Run the code:-
     1. Make sure Python is installed.
     2. Install libraries: pip install PySide6 psutil
     3. Run this Command --> python task_manager.py
-
-
